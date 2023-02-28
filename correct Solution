@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution
+{
+    public static int calculateFee(List<int> start, List<int> stop)
+    {
+        if (start[2] > stop[2])
+            return 10000;
+        else if (start[2] < stop[2])
+            return 0;
+        if (start[1] > stop[1])
+            return 500 * (start[1] - stop[1]);
+        if (start[0] > stop[0])
+            return 15 * (start[0] - stop[0]);
+        return 0;
+    }
+
+    static void Main(String[] args)
+    {
+        List<int> start = Console.ReadLine().Split(' ').ToList().
+                            Select(sTemp => Convert.ToInt32(sTemp)).ToList();
+
+        List<int> stop = Console.ReadLine().Split(' ').ToList().
+                        Select(sTemp => Convert.ToInt32(sTemp)).ToList();
+
+        Console.WriteLine(calculateFee(start, stop));
+    }
+}
